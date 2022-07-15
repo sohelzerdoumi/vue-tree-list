@@ -7,6 +7,7 @@
       @delete-node="onDel"
       @add-node="onAddNode"
       @drop="drop"
+      @dblclick="dblclick"
       @drop-before="dropBefore"
       @drop-after="dropAfter"
       :model="data"
@@ -134,7 +135,9 @@ export default {
       if (!this.data.children) this.data.children = []
       this.data.addChildren(node)
     },
-
+    dblclick(node) {
+      node.setEditable()
+    },
     getNewTree() {
       var vm = this
       function _dfs(oldNode) {

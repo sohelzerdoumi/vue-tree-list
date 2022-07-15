@@ -26,6 +26,7 @@
         @mouseover="mouseOver"
         @mouseout="mouseOut"
         @click.stop="click"
+        @dblclick.stop="dbclick"
       >
         <span class="vtl-caret vtl-is-small" v-if="model.children && model.children.length > 0">
           <i class="vtl-icon" :class="caretClass" @click.prevent.stop="toggle"></i>
@@ -284,6 +285,9 @@ export default {
         toggle: this.toggle,
         ...this.model
       })
+    },
+    dbclick() {
+      this.rootNode.$emit('dblclick', this)
     },
 
     addChild(isLeaf) {
